@@ -91,8 +91,15 @@ tbody td {
 } 
 
 .edit-btn { 
-	color: orange; 
+	padding: 13px; 
+	background-color: #4caf50; 
+	color: white; 
+
+	border-radius: 4px; 
 	cursor: pointer; 
+	margin: 10px;
+	width: 15%;
+
 } 
 .total-amount { 
 	padding: 10px; 
