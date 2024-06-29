@@ -1,5 +1,6 @@
 	// script.js 
 // Get form, expense list, and total amount elements 
+const expenseDate = document.getElementById('expense-date');
 const expenseForm = 
 	document.getElementById("expense-form"); 
 const expenseList = 
@@ -25,8 +26,10 @@ function renderExpenses() {
 		const expense = expenses[i]; 
 		const expenseRow = document.createElement("tr"); 
 		expenseRow.innerHTML = ` 
-	<td>${expense.name}</td> 
-	<td>KSH${expense.amount}</td> 
+		<td>${expense.date}</td>
+		<td>${expense.name}</td> 
+		<td>KSH${expense.amount}</td> 
+	
 	
 	<td class="delete-btn" data-id="${i}">Delete</td> 
 	
@@ -40,7 +43,7 @@ function renderExpenses() {
 
 	// Update total amount display 
 	totalAmountElement.textContent = 
-		totalAmount.toFixed(2); 
+		totalAmount.toFixed(3); 
 
 	// Save expenses to localStorage 
 	localStorage.setItem("expenses", 
@@ -51,22 +54,22 @@ function renderExpenses() {
 function addExpense(event) { 
 	event.preventDefault(); 
 
-	// Get expense name and amount from form 
-	const expenseNameInput = 
-		document.getElementById("expense-name"); 
-	const expenseAmountInput = 
-		document.getElementById("expense-amount"); 
-	const expenseName = 
-		expenseNameInput.value; 
-	const expenseAmount = 
-		parseFloat(expenseAmountInput.value); 
+	// Get expense date, name and amount from form 
+	const expenseDateInput = document.getElementById('date');
+	const expenseNameInput = document.getElementById("expense-name"); 
+	const expenseAmountInput = document.getElementById("expense-amount"); 
+
+	const expenseDate = expenseDateInput.value;	
+	const expenseName = expenseNameInput.value; 
+	const expenseAmount = parseFloat(expenseAmountInput.value); 
 
 	// Clear form inputs 
 	expenseNameInput.value = ""; 
-	expenseAmountInput.value = ""; 
+	expenseAmountInput.value = "";
+	expenseDateInput.value =  "";
 
 	// Validate inputs 
-	if (expenseName === "" || isNaN(expenseAmount)) { 
+	if (!date || expenseName === "" || isNaN(expenseAmount)) { 
 		alert("Please enter valid expense details."); 
 		return; 
 	} 
@@ -74,7 +77,8 @@ function addExpense(event) {
 	// Create new expense object 
 	const expense = { 
 		name: expenseName, 
-		amount: expenseAmount, 
+		amount: expenseAmount,
+		date: expenseDate,
 	}; 
 
 	// Add expense to expenses array 

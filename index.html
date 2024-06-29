@@ -15,12 +15,12 @@
 	<div class="container"> 
 		<h1>Expenditure Manager</h1> 
 		<form id="expense-form"> 
-			<input type="text"
-				id="expense-name"
-				placeholder="Expense Name" required /> 
-			<input type="number"
-				id="expense-amount"
-				placeholder="Amount" required /> 
+		<div class="expense-date"> 
+			<label for="date">Date:</label>
+			<input type="date" id="date" required>
+		</div>
+			<input type="text" id="expense-name" placeholder="Expense Name" required /> 
+			<input type="number" id="expense-amount" placeholder="Amount" required /> 
 			<button type="submit"> 
 				Add Expense 
 			</button> 
@@ -29,9 +29,11 @@
 			<table> 
 				<thead> 
 					<tr> 
+						<th>Date</th>
 						<th>Expense Name</th> 
 						<th>Amount</th> 
-						<th>Action</th> 
+						<th>Action</th>
+						<th>Action</th>
 					</tr> 
 				</thead> 
 				<tbody id="expense-list"></tbody> 
